@@ -90,13 +90,13 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  AndroidAudioContentType contentType = AndroidAudioContentType.movie;
+  AndroidAudioContentType contentType = AndroidAudioContentType.music;
 
   int sessionId = -1;
 
   bool? isMusicActive;
 
-  AndroidAudioFocusGainType _gainType = AndroidAudioFocusGainType.gain;
+  AndroidAudioFocusGainType _gainType = AndroidAudioFocusGainType.gainTransient;
 
   String? _getGainType(AndroidAudioFocusGainType type) {
     switch (type) {
@@ -195,6 +195,27 @@ class _MyAppState extends State<MyApp> {
                       setState(() {
                         sessionId = id;
                       });
+
+                      // AndroidAudioManager().setStreamVolume(
+                      //     AndroidStreamType.music,
+                      //     100,
+                      //     AndroidAudioVolumeFlags.playSound);
+                      // AndroidAudioManager().setStreamVolume(
+                      //     AndroidStreamType.voiceCall,
+                      //     100,
+                      //     AndroidAudioVolumeFlags.playSound);
+                      // AndroidAudioManager().setStreamVolume(
+                      //     AndroidStreamType.tts,
+                      //     100,
+                      //     AndroidAudioVolumeFlags.playSound);
+                      // AndroidAudioManager().setStreamVolume(
+                      //     AndroidStreamType.notification,
+                      //     100,
+                      //     AndroidAudioVolumeFlags.playSound);
+                      // AndroidAudioManager().setStreamVolume(
+                      //     AndroidStreamType.alarm,
+                      //     100,
+                      //     AndroidAudioVolumeFlags.playSound);
                     },
                     child: Text('Session id: $sessionId'),
                   ),
@@ -257,6 +278,20 @@ class _MyAppState extends State<MyApp> {
                           });
                         }
                       });
+
+                      // final result = await cachePlayer.play(
+                      //   'camera.mp3',
+                      //   isNotification: true,
+                      // );
+                      // result.onPlayerStateChanged.listen((event) async {
+                      //   if (event == PlayerState.COMPLETED) {
+                      //     print('finish playing audio');
+                      //     await AndroidAudioManager().abandonAudioFocus();
+                      //     result.stop();
+                      //     result.release();
+                      //     result.dispose();
+                      //   }
+                      // });
                     },
                     child: Text('Play'),
                   ),
